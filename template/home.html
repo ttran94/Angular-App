@@ -11,13 +11,17 @@
                 <div class="container-fluid">
                     <div class="navbar-form">
                         <div class="form-inline">
-                            <div class="form-group">
-                                <input type="text" ng-model="taskTitle" class="form-control" id="task_title" placeholder="Task Title" required/>
-                            </div>
-                            <div class="form-group" style="margin-right:10px;">
-                                <input type="text" ng-model="taskMessage" class="form-control" id="task_comment" placeholder="Task Description" required/>
-                            </div>
-                            <button type="submit" ng-click="todoAdd()" class="btn btn-primary pull-right" >Add Task</button>
+                            <form name="myForm">
+                                <div class="form-group">
+                                    <input type="text" name="taskTitle" ng-model="taskTitle" class="form-control" id="task_title" placeholder="Task Title" required/>
+                                </div>
+                                <div class="form-group" style="margin-right:10px;">
+                                    <input type="text" name="taskMessage" ng-model="taskMessage" class="form-control" id="task_comment" placeholder="Task Description" required/>
+                                </div>
+
+                                    <button type="submit" ng-click="todoAdd()" ng-disabled="myForm.taskTitle.$error.required || myForm.taskMessage.$error.required || myForm.$invalid" class="btn btn-primary pull-center" >Add Task</button>
+
+                            </form>
                         </div>
 
                     </div>
@@ -28,12 +32,12 @@
         </div>
     </div>
 
-    <div class="row" id="success" ng-model="value" style="display:none;">
+    <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            <div class="alert alert-success" >
-                <button type="button" class="close"  ng-show="{{value}}" data-dismiss="alert">x</button>
-                <strong>Success! </strong>
-                The task has been added to your list.
+            <div class="alert alert-success" fade-away="4000">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Todo APP v1.0</strong>
+                More features will be added soon.
             </div>
         </div>
     </div>

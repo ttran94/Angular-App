@@ -28,6 +28,7 @@ app.config(function ($routeProvider) {
 
 
 app.controller('form_register', function($scope, $location, $q, Registration){
+    
     $scope.registered = function() {
         Registration.register($scope.username, $scope.password, $scope.email).then(function(response){
             response = Registration.getAccess();
@@ -105,7 +106,7 @@ app.controller('homeController', function($scope, $http, $location, addTask, $q,
     
 
     $scope.todoAdd = function() {
-        if(!(($scope.taskMessage == "") && ($scope.taskTitle == ""))) {
+        if(($scope.taskMessage != "") && ($scope.taskTitle != "")) {
             addTask.addItem(getID, $scope.taskTitle, $scope.taskMessage).then(function (response) {
                 $scope.todoList[0].push({
                     task_id: getID,
@@ -119,6 +120,9 @@ app.controller('homeController', function($scope, $http, $location, addTask, $q,
 
             });
             canceler.reject(getTas);
+        }
+        if(($scope.taskMessage != "") && ($scope.taskTitle != "")) {
+            console.log(true);
         }
     };
     
