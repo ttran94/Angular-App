@@ -13,7 +13,7 @@ try {
     $post = file_get_contents('php://input');
     $data = json_decode($post);
     $user_id = safe_input($data->userId,"");
-    $query = "DELETE from task WHERE `task_id` = :userId";
+    $query = "DELETE from task WHERE `unique_id` = :userId";
     $sql = $con->prepare($query);
     $sql->bindParam(':userId', $user_id, PDO::PARAM_STR);
 

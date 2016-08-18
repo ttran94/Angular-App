@@ -22,6 +22,7 @@ try {
     $sql->bindParam(':task_title', $task_message, PDO::PARAM_STR);
     if($sql->execute()) {
         $result[0]['status'] = "success";
+        $result[0]['unique'] = $con->lastInsertId();
     } else {
         $result[0]['status'] = "failed";
     }

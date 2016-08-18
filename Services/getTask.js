@@ -2,7 +2,7 @@ angular.module("App").factory("getList", function($http, $q){
     var doList;
     var defer = $q.defer();
     function getTask(taskId) {
-        $http({
+        return $http({
             method:"POST",
             url: 'PHP_Controller/table.php',
             data: {
@@ -12,11 +12,10 @@ angular.module("App").factory("getList", function($http, $q){
         }).then(function(response){
             doList = response.data;
             console.log(response.data);
-            defer.resolve(doList);
+            return doList;
         },function(error){
             defer.reject(error);
         });
-        return defer.promise;
     }
 
 

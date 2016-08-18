@@ -16,6 +16,7 @@ try {
     $password = safe_input($data->password,"");
     $email = safe_input($data->email,"");
 
+
     $query = "SELECT * from users WHERE `user_name` = :username";
     $sql = $con->prepare($query);
     $sql->bindParam(':username', $username, PDO::PARAM_STR);

@@ -14,8 +14,6 @@ try {
     $data = json_decode($post);
     $username = safe_input($data->username,"");
     $password = safe_input($data->password,"");
-    //$username = "starblu3";
-    //$password = "123123";
     $query = "Select * from users WHERE `user_name` = :user AND `user_pass` = :pass";
     $sql = $con->prepare($query);
     $sql->bindParam(':user', $username, PDO::PARAM_STR);

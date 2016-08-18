@@ -44,8 +44,6 @@ app.controller('form_register', function($scope, $location, $q, Registration){
     };
 });
 
-
-
 app.run(function($rootScope, $location){
     $rootScope.$on("$routeChangeSuccess", function (userId) {
         $rootScope.todoList = "";
@@ -59,7 +57,6 @@ app.run(function($rootScope, $location){
         }
     });
 });
-
 
 app.controller('form_login', function($scope, $route, $window, $location, $http, Auth, getList){
     $scope.authUsername = false;
@@ -84,31 +81,18 @@ app.controller('form_login', function($scope, $route, $window, $location, $http,
             console.log(error);
         });
     };
-
-
-   /* $scope.username = "starblu3";
-    $scope.password = "123123";
-    data = {
-        'username': "starblu3",
-        'password': "123123"
-    };
-
-    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-    $http.post('PHP_Controller/Conn_DB.php',data).then(function (response) {
-        var userN = JSON.parse(JSON.stringify(response.data));
-        console.log(userN);
-        console.log(response.data);
-
-    });*/
 });
 
-app.controller('homeController', function($scope, $timeout, $rootScope, $http, $route, $location, $window, addTask, getList,removeTask, Auth){
-
+app.controller('homeController', function($scope, $http, $location, addTask, $q, getList,removeTask, Auth){
+    var canceler = $q.defer();
+    var getTas = addTask.getTask();
+    canceler.reject(getTas);
     $scope.logout = function() {
         Auth.Logout();
         $scope.todoList = [];
         $location.path('/login');
     };
+
 
     var getID = Auth.getUser().ID;
     $scope.userD = Auth.getUser().ID;
@@ -118,41 +102,34 @@ app.controller('homeController', function($scope, $timeout, $rootScope, $http, $
         $scope.todoList.push(adder);
 
     });
+    
 
-    /*$scope.$watch(function($scope){$scope.todoList},function (ne  wValue, oldValue) {
-        if(newValue != oldValue) {
-            $scope.todoList = newValue;
-            console.log($scope.todoList)
-        }
-    });
-
-    $scope.$apply(function(){
-        console.log($scope.todoList);
-    });*/
     $scope.todoAdd = function() {
-        addTask.addItem(getID ,$scope.taskTitle,$scope.taskMessage).then(function(response){
-            $scope.todoList[0].push({task_id:getID, task_message : $scope.taskMessage, task_title : $scope.taskTitle});
-            console.log($scope.todoList);
-        });
+        if(!(($scope.taskMessage == "") && ($scope.taskTitle == ""))) {
+            addTask.addItem(getID, $scope.taskTitle, $scope.taskMessage).then(function (response) {
+                $scope.todoList[0].push({
+                    task_id: getID,
+                    task_message: $scope.taskMessage,
+                    task_title: $scope.taskTitle,
+                    unique_id : response.Error.unique
+                });
+                $scope.taskTitle = "";
+                $scope.taskMessage = "";
+                console.log($scope.todoList);
+
+            });
+            canceler.reject(getTas);
+        }
     };
     
 
     $scope.remove = function(index) {
         removeTask.getTask($scope.todoList[0][index].unique_id).then(function(response){
+            $scope.todoList[0].splice(index, 1);
             console.log(response);
         });
 
-        /*delete $scope.todoList[0][index];*/
-
-       /* var oldList = $scope.todoList;
-        $scope.todoList = [];
-        angular.forEach(oldList, function(x) {
-            if (!x.done) $scope.todoList.push(x);
-        });*/
     };
-
-
-
 });
 
 

@@ -22,8 +22,19 @@
 
                     </div>
 
+
                 </div>
             </nav>
+        </div>
+    </div>
+
+    <div class="row" id="success" ng-model="value" style="display:none;">
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="alert alert-success" >
+                <button type="button" class="close"  ng-show="{{value}}" data-dismiss="alert">x</button>
+                <strong>Success! </strong>
+                The task has been added to your list.
+            </div>
         </div>
     </div>
 
@@ -31,7 +42,9 @@
         <p class="text-success">{{success}}</p>
     </div>
 
-        <div class="col-sm-8 col-xs-offset-2" style="background:#fff; color:black; padding:10px; top:40px;">
+        <div class="col-sm-8 col-xs-offset-2" style="background:#fff; color:black; padding:10px; top:40px; -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;">
         <table class="table text-center">
             <thead class="text-center">
             <tr>
@@ -45,7 +58,7 @@
                 <td>{{$index}}</td>
                 <td>{{x.task_message}}</td>
                 <td>{{x.task_title}}</td>
-                <td><button class="btn btn-warning" ng-click="remove($index)" title="remove"><span class="glyphicon glyphicon-trash"</button></td>
+                <td><button class="btn btn-warning" ng-click="remove($index)" title="remove"><span class="glyphicon glyphicon-trash"></span></button></td>
             </tr>
             </tbody>
         </table>
