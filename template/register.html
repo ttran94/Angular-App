@@ -1,0 +1,52 @@
+<div class="container" style="margin-top:100px;">
+    <div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-login">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#login" class="text-capitalize" id="login-form-link">Login</a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="#register" class="active" id="register-form-link">Register</a>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12" >
+        <form ng-controller="form_register" class="register-form" name="register" role="form" >
+            <div class="text-center">
+                <p class="text-danger">{{registerError}}</p>
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="username" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autofocus required>
+            </div>
+            <div class="form-group">
+                <input type="email" ng-model="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" required>
+            </div>
+            <div class="form-group">
+                <input type="password" ng-model="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" ng-model="confirm_password"  pass-match="password" name="confirm_password" id="confirm_password" tabindex="2" class="form-control" placeholder="Confirm Password" required>
+                <div style="margin-top:10px;">
+                    <span ng-show="register.confirm_password.$error.isMatch" class="text-danger">Password do not match!</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit"  name="register-submit" ng-click="registered()" id="register-submit" ng-disabled="register.$invalid || register.confirm_password.$error.isMatch" tabindex="4" class="form-control btn btn-primary" value="Register Now">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

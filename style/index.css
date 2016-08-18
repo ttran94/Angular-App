@@ -1,0 +1,71 @@
+.panel-login {
+    border-color: #ccc;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+
+.forgot-password{
+    text-decoration: underline;
+    color: #888;
+}
+
+.forgot-password:hover{
+    text-decoration: none;
+}
+
+
+.form-inline > * {
+    margin:0px 5px;
+}
+
+.panel-login >.panel-heading{
+    color: #00415d;
+    border-color: #fff;
+    text-align:center;
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+.panel-login >.panel-heading  a{
+    color: #666;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.panel-login >.panel-heading a.active {
+    color: #029f5b;
+}
+.panel-login>.panel-heading hr {
+    margin-top: 10px;
+}
+
+
+
+
+.animate.ng-enter {
+    opacity:0;
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+}
+.animate.ng-enter.ng-enter-active {
+    opacity: 1;
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+}
+
+.animate.ng-leave {
+    opacity: 0;
+}
+
+.table th{
+    text-align: center;
+}
+
+
+
+

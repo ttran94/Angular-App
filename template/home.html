@@ -1,0 +1,54 @@
+<div ng-controller="homeController" class="container">
+    <div class="text-center">
+        <h1 class="text-center" style="display:inline-block;">Welcome to Todo App Panel</h1>
+        <button class="btn btn-danger pull-right" ng-click="logout()"><a href="#/login" ng-click="logout()" style="text-decoration:none;color:#fff; left:50px;">Logout</a></button>
+    </div>
+
+
+    <div class="row bg-primary">
+        <div class="col-xs-6 col-xs-offset-3">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-form">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <input type="text" ng-model="taskTitle" class="form-control" id="task_title" placeholder="Task Title" required/>
+                            </div>
+                            <div class="form-group" style="margin-right:10px;">
+                                <input type="text" ng-model="taskMessage" class="form-control" id="task_comment" placeholder="Task Description" required/>
+                            </div>
+                            <button type="submit" ng-click="todoAdd()" class="btn btn-primary pull-right" >Add Task</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div text-center>
+        <p class="text-success">{{success}}</p>
+    </div>
+
+        <div class="col-sm-8 col-xs-offset-2" style="background:#fff; color:black; padding:10px; top:40px;">
+        <table class="table text-center">
+            <thead class="text-center">
+            <tr>
+                <th>#TaskID</th>
+                <th>Task Title</th>
+                <th>Task Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in todoList[0]" class="animate">
+                <td>{{$index}}</td>
+                <td>{{x.task_message}}</td>
+                <td>{{x.task_title}}</td>
+                <td><button class="btn btn-warning" ng-click="remove($index)" title="remove"><span class="glyphicon glyphicon-trash"</button></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

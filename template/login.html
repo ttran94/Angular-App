@@ -1,0 +1,47 @@
+<div class="container" style="margin-top:100px;">
+    <div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-login">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#login" class="active text-capitalize" id="login-form-link">Login</a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="#register" id="register-form-link">Register</a>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12" >
+                    <form ng-controller="form_login" class="login-form" name="loginForm" role="form" style="display: block;">
+                        <div class="row">
+
+                            <div class="text-error text-center">
+                                    <p class="text-danger">{{loginError}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text"  ng-model="username" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password"  ng-model="password"  name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <input type="submit" ng-click="login()" ng-disabled="loginForm.$invalid" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Log In">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
