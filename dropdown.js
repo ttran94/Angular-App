@@ -289,7 +289,9 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
 				$scope.externalEvents.onSelectAll();
 
 				searchResult = $filter('filter')($scope.options, $scope.getFilter($scope.input.searchFilter));
-				
+				angular.forEach(searchResult, function(value) {
+					$scope.setSelectedItem(value[$scope.settings.idProp], true, false);
+				});
 			};
 
 			$scope.deselectAll = function(dontSendEvent) {
