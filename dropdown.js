@@ -284,6 +284,7 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
 			};
 
 			$scope.selectAll = function() {
+				console.log('selectALL');
 				var searchResult;
 				$scope.deselectAll(true);
 				$scope.externalEvents.onSelectAll();
