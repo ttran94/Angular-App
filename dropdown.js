@@ -313,6 +313,8 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
 			};
 
 			$scope.setSelectedItem = function(id, dontRemove, fireSelectionChange) {
+				console.log('kappa');
+				console.log('kappa');
 				var findObj = getFindObj(id);
 				var finalObj = null;
 
