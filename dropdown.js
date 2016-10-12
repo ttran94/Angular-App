@@ -336,7 +336,7 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
 
 					if (!dontRemove && exists) {
 						$scope.selectedModel.splice(findIndex($scope.selectedModel, findObj), 1);
-						if (fireSelectionChange != true)
+						if (fireSelectionChange != true) {
 							$scope.externalEvents.onItemDeselect(findObj);
 						}
 						if ($scope.settings.closeOnDeselect) $scope.open = false;
