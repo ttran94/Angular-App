@@ -335,13 +335,13 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
 					var exists = findIndex($scope.selectedModel, findObj) !== -1;
 
 					if (!dontRemove && exists) {
-						console.log('kappa');
+	
 						$scope.selectedModel.splice(findIndex($scope.selectedModel, findObj), 1);
-						if (fireSelectionChange == true){ console.log('123');$scope.externalEvents.onItemDeselect(findObj);}
+						$scope.externalEvents.onItemDeselect(findObj);
 						if ($scope.settings.closeOnDeselect) $scope.open = false;
 					} else if (!exists && ($scope.settings.selectionLimit === 0 || $scope.selectedModel.length < $scope.settings.selectionLimit)) {
 						$scope.selectedModel.push(finalObj);
-						$scope.externalEvents.onItemSelect(finalObj);
+						if (fireSelectionChange == true) { console.log('123');$scope.externalEvents.onItemSelect(finalObj) };
 						if ($scope.settings.closeOnSelect) $scope.open = false;
 						if ($scope.settings.selectionLimit > 0 && $scope.selectedModel.length === $scope.settings.selectionLimit) {
 							$scope.externalEvents.onMaxSelectionReached();
