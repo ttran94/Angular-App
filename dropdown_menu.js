@@ -1,6 +1,6 @@
 'use strict';
 
-var directiveModule = angular.module('angularjs-dropdown-multiselect', []);
+var directiveModule = angular.module('angularjs-dropdown', []);
 
 directiveModule.directive('mfDropdownStaticInclude', ['$compile', function($compile) {
 	return function(scope, element, attrs) {
